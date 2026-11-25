@@ -81,18 +81,18 @@ prerequisites for automating a Laravel deployment to one VPS.
   ----------------------------------- -----------------------------------
   Current role                        Full-Stack Developer
 
-  Main application stack              Laravel, PHP, MySQL, JavaScript
+  Main application stack              Laravel, PHP, MySQL, Redis, JavaScript
 
   Development computer                Windows 11
 
-  Local Linux environment             WSL Ubuntu is already installed
+  Local Linux environment             WSL 2 (Ubuntu 24.04 LTS) + PowerShell
 
   Remote lab                          Hostinger VPS
 
   Remote operating system             Ubuntu 24.04 LTS
 
-  VPS access status at project start  Not connected yet; SSH setup is the
-                                      first practical task
+  VPS access status at project start  Local WSL Ubuntu 24.04 setup is Lesson
+                                      1.1; VPS SSH setup follows in Lesson 1.2
 
   Primary learning goal               Understand DevOps and automate the
                                       development/deployment process
@@ -111,9 +111,11 @@ prerequisites for automating a Laravel deployment to one VPS.
 
 ### Important environment notes
 
--   Use WSL for local Linux practice and experiments.
+-   Use Windows Terminal / PowerShell on Windows 11 for WSL management
+    commands (`wsl ...`) and **WSL 2 (Ubuntu 24.04 LTS)** for local Linux
+    practice and experiments.
 -   Use the Hostinger VPS for real remote-server administration and
-    deployment practice.
+    deployment practice (starting in Lesson 1.2).
 -   Do not assume the VPS IP address, SSH port, credentials, plan
     resources, domain, or firewall configuration. Ask the learner or
     inspect their provided output when those details are needed.
@@ -167,8 +169,8 @@ Every lesson should normally include:
 
 ### Safety rules for the VPS
 
--   Confirm the target machine before running commands: local WSL or
-    remote VPS.
+-   Confirm the target machine before running commands: local Windows
+    PowerShell, local WSL Ubuntu, or remote VPS.
 -   Prefer a non-root administrative user for normal administration.
 -   Back up important configuration and data before risky changes.
 -   Before changing SSH configuration or firewall rules, ensure an
@@ -199,12 +201,12 @@ tools.
   -----------------------------------------------------------------------
   Lesson            Topic             Main outcome      Status
   ----------------- ----------------- ----------------- -----------------
-  0.1               What DevOps is    Understand DevOps Completed in
-                    and the software  culture, feedback introductory
-                    delivery          loops, CI, CD and discussion
+  0.1               What DevOps is    Understand DevOps Not started
+                    and the software  culture, feedback 
+                    delivery          loops, CI, CD and 
                     lifecycle         operations        
 
-  0.2               Understand the    Know the role of  In progress
+  0.2               Understand the    Know the role of  Not started
                     learning lab      Windows, WSL,     
                                       VPS, SSH and      
                                       GitHub            
@@ -220,67 +222,80 @@ tools.
   -----------------------------------------------------------------------
   Lesson            Topic             Main outcome      Status
   ----------------- ----------------- ----------------- -----------------
-  1.1               Connect to Ubuntu Establish and     In progress
+  1.1               Install WSL and   Enable WSL 2,     In progress
+                    Ubuntu 24.04 on   inspect online    
+                    Windows 11        distros and       
+                                      install           
+                                      `Ubuntu-24.04`    
+
+  1.2               Connect to Ubuntu Establish and     Not started
                     VPS using SSH     verify secure     
                                       remote access     
 
-  1.2               Identify Linux    Inspect OS,       In progress
+  1.3               Identify Linux    Inspect OS,       Not started
                     system            kernel, hostname, 
                     information       uptime, RAM, disk 
                                       and network       
                                       interfaces        
 
-  1.3               Linux filesystem  Understand `/`,   In progress
+  1.4               Linux filesystem  Understand `/`,   Not started
                     hierarchy         `/etc`, `/var`,   
                                       `/home`, `/root`, 
                                       `/usr`, `/opt`    
                                       and `/tmp`        
 
-  1.4               Essential         Navigate, list,   In progress
+  1.5               Essential         Navigate, list,   Not started
                     terminal commands create, copy,     
                                       move, inspect and 
                                       remove files      
                                       safely            
 
-  1.5               Linux users,      Understand users, In progress
+  1.6               Linux users,      Understand users, Not started
                     groups and        groups, `rwx`,    
                     permissions       `chmod`, `chown`, 
                                       `sudo` and        
                                       ownership         
 
-  1.6               Package           Update package    In progress
+  1.7               Package           Update package    Not started
                     management with   indexes, upgrade  
                     APT               packages, install 
                                       and inspect       
                                       software          
 
-  1.7               Processes and     Understand        In progress
+  1.8               Processes and     Understand        Not started
                     services          processes, `ps`,  
                                       `top`,            
                                       `systemctl` and   
                                       service status    
 
-  1.8               Linux logs and    Inspect logs with Not started
+  1.9               Custom systemd    Write, enable and Not started
+                    services          manage custom     
+                                      `systemd` unit    
+                                      files (e.g. for   
+                                      background        
+                                      workers)          
+
+  1.10              Linux logs and    Inspect logs with Not started
                     troubleshooting   `journalctl` and  
                                       files under       
                                       `/var/log`        
 
-  1.9               Environment       Understand shell  Not started
+  1.11              Environment       Understand shell  Not started
                     variables and     variables, PATH,  
                     shell basics      profiles and      
                                       command execution 
 
-  1.10              Bash scripting    Write simple      Not started
+  1.12              Bash scripting    Write simple      Not started
                     fundamentals      scripts using     
                                       variables,        
                                       conditions, loops 
                                       and exit codes    
 
-  1.11              Cron and          Schedule and      Not started
+  1.13              Cron and          Schedule and      Not started
                     scheduled jobs    verify recurring  
                                       Linux tasks       
 
-  1.12              Linux             Administer a      Not started
+  1.14              Linux             Administer a      Not started
                     fundamentals      basic Ubuntu      
                     practical         server without    
                     assessment        step-by-step      
@@ -460,17 +475,22 @@ tools.
                     application       and supporting    
                                       services          
 
-  5.10              Laravel workers,  Run background    Not started
-                    scheduler and     workloads         
-                    queues in         reliably          
-                    containers                          
+  5.10              Redis for Laravel Run and configure Not started
+                    cache, sessions   Redis as a        
+                    and queues        backing service   
+                                      in Docker Compose 
 
-  5.11              Docker image      Tag, publish,     Not started
+  5.11              Laravel workers,  Run background    Not started
+                    scheduler and     workloads         
+                    queues in         reliably with     
+                    containers        Redis             
+
+  5.12              Docker image      Tag, publish,     Not started
                     registries        pull and manage   
                                       application       
                                       images            
 
-  5.12              Docker practical  Rebuild and run   Not started
+  5.13              Docker practical  Rebuild and run   Not started
                     assessment        the Laravel       
                                       environment       
                                       consistently      
@@ -775,53 +795,44 @@ single-VPS Laravel automation project.
 
 # 6. Current Progress --- Source of Truth
 
-**Last updated:** 2026-11-22
+**Last updated:** 2026-11-26
 
 ### Current position
 
--   Introductory discussion about DevOps and the overall learning
-    direction: completed.
--   Hostinger VPS operating system identified as Ubuntu 24.04: confirmed
-    by learner.
--   Windows 11 is the local workstation.
--   WSL Ubuntu is already installed and should be retained for local
-    practice.
--   VPS SSH connection: **not connected yet** at the beginning of Lesson
-    1.
--   Lesson 1 material has been provided, but the learner has not yet
-    submitted command outputs or confirmed completion.
--   Do not mark Lesson 1 as completed until practical work has been
-    reviewed.
+-   Curriculum starts in **Phase 1 --- Lesson 1.1: Install WSL & Ubuntu
+    24.04 on Windows 11** (`wsl --install`, `wsl --list --online`,
+    `wsl --install -d Ubuntu-24.04`).
+-   Windows 11 is the local workstation with **WSL 2 (Ubuntu 24.04 LTS)**
+    for local Linux practice.
+-   Hostinger VPS running Ubuntu 24.04 LTS will be connected via SSH in
+    Lesson 1.2.
+-   Lesson 1.1 is built in the interactive `app/` hub and currently **In
+    progress**.
 
-### Lesson 1 --- Linux Fundamentals
+### Lesson 1.1 --- Install WSL & Ubuntu 24.04 on Windows 11
 
-  Exercise   Task                                          Status
-  ---------- --------------------------------------------- --------------
-  1          Connect to VPS using SSH                      Not verified
-  2          Identify Ubuntu version and kernel            Not verified
-  3          Inspect RAM and disk usage                    Not verified
-  4          Explore `/etc`, `/var`, `/home`, `/var/log`   Not verified
-  5          Create `~/devops-lab/lesson-01`               Not verified
-  6          Create, copy, rename and read files           Not verified
-  7          Change permissions using `chmod`              Not verified
-  8          Update Ubuntu packages                        Not verified
-  9          Inspect processes using `ps` and `top`        Not verified
-  10         Check SSH service status and logs             Not verified
+  Exercise   Task                                                    Status
+  ---------- ------------------------------------------------------- --------------
+  1          List online distros (`wsl --list --online`)             In progress
+  2          Install WSL & Ubuntu (`wsl --install -d Ubuntu-24.04`)  In progress
+  3          Complete first-boot Linux UNIX user & password setup    Not verified
+  4          Verify WSL VERSION 2 (`wsl --list --verbose`)           Not verified
+  5          Verify Ubuntu 24.04 inside Linux (`cat /etc/os-release`) Not verified
 
-### What the learner should submit for Lesson 1 review
+### What the learner should submit for Lesson 1.1 review
 
-Share the following outputs, after removing public IP addresses or other
-sensitive information:
+Share the outputs of:
+
+``` powershell
+# In Windows PowerShell:
+wsl --list --verbose
+```
 
 ``` bash
-cat /etc/os-release
-free -h
-df -h
+# Inside WSL Ubuntu 24.04:
 whoami
-hostname
+cat /etc/os-release
 uname -a
-systemctl status ssh
-ls -la ~/devops-lab/lesson-01
 ```
 
 Also report:
@@ -945,8 +956,8 @@ Follow these rules:
 6.  Teach step by step, using plain explanations appropriate for an
     experienced Laravel developer who is new to DevOps.
 7.  Explain what each important command does, why it is needed, where it
-    runs (Windows, WSL or remote VPS), and what successful output looks
-    like.
+    runs (local Windows PowerShell, local WSL Ubuntu, or remote VPS), and
+    what successful output looks like.
 8.  Clearly distinguish commands that run locally from commands that run
     on the VPS.
 9.  Give practical exercises and expected results. Include safe
@@ -1012,6 +1023,26 @@ say:
   2026-11-22                          Recorded Ubuntu 24.04 VPS, Windows
                                       11 workstation, existing WSL Ubuntu
                                       and the initial Lesson 1 position.
+
+  2026-11-22                          Marked all lessons as Not started;
+                                      added custom systemd services
+                                      (Lesson 1.8) and Redis for Laravel
+                                      (Lesson 5.10).
+
+  2026-11-22                          Removed WSL references; updated
+                                      environment context to Windows 11
+                                      PowerShell/Terminal and Hostinger
+                                      Browser Terminal for current VPS
+                                      access.
+
+  2026-11-26                          Updated roadmap to start Phase 1
+                                      with installing WSL 2 & Ubuntu
+                                      24.04 on Windows 11 (Lesson 1.1:
+                                      `wsl --install`,
+                                      `wsl --list --online`,
+                                      `wsl --install -d Ubuntu-24.04`);
+                                      reset app lessons to start fresh
+                                      from this Lesson 1.1.
   -----------------------------------------------------------------------
 
 **End of document.**

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Learning Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-icon">&gt;_</div>
+        <div>
+          <div class="brand-title">DevOps Lab</div>
+          <div class="brand-sub">WSL Ubuntu &amp; Linux VPS</div>
+        </div>
+      </div>
+
+      <nav class="nav-section">
+        <button class="nav-item active" id="navDashboard" type="button">
+          <span class="nav-icon">&#9638;</span>
+          <span>Dashboard</span>
+        </button>
+      </nav>
+
+      <div class="nav-heading">Curriculum Phases</div>
+      <nav class="phases-nav" id="phasesNav"></nav>
+
+      <div class="sidebar-footer">
+        <div class="env-pill">Win 11: PowerShell + WSL 2</div>
+        <div class="env-pill">Distro: Ubuntu 24.04 LTS</div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrap">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Toggle sidebar">&#9776;</button>
+        <div class="breadcrumb" id="breadcrumb">Dashboard</div>
+        <div class="topbar-actions" id="topbarActions"></div>
+      </header>
+
+      <main class="content" id="mainContent"></main>
+    </div>
+  </div>
+
+  <!-- Curriculum & Lesson Data (loaded as scripts so file:// works offline with zero server) -->
+  <script src="data/curriculum.js"></script>
+  <script src="data/phase-1/lesson-1.1.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
